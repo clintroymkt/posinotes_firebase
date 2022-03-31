@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "209657432953",
+    "firebase_url": "https://posinotes-d967a.firebaseio.com",
+    "project_id": "posinotes-d967a",
+    "storage_bucket": "posinotes-d967a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209657432953:android:4384c2d9434b4f51a3fda8",
+        "android_client_info": {
+          "package_name": "com.example.posinotes_sqlflite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209657432953-au97q3hnpd6oepshqeqrt0f9c4vqaa9u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrJ88Ioby_vIX9LKyXwiSbwzcLo5mT1bg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209657432953-au97q3hnpd6oepshqeqrt0f9c4vqaa9u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
