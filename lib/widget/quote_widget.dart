@@ -27,7 +27,7 @@ class QuoteWidget extends StatelessWidget {
                 child: Text(
                   quote,
                   style: Themetext.headline,
-                  textAlign: TextAlign.justify,
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),

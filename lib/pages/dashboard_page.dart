@@ -106,7 +106,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     children: [
                       IconButton(
                         icon: Icon(
-                          Icons.note_outlined,
+                          Icons.sticky_note_2_rounded,
                           color: currentPage == 1 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                           size: 30,
                         ),
@@ -124,7 +124,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     children: [
                       IconButton(
                           onPressed: () => setPage(4),
-                          icon: Icon(Icons.article_outlined,
+                          icon: Icon(Icons.article_rounded,
                               color:
                                   currentPage == 4 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                               size: 30)),

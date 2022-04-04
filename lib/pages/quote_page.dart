@@ -7,7 +7,7 @@ import 'package:posinotes_sqlflite/model/quote.dart';
 //import 'package:posinotes_sqlflite/network/quotes_network.dart';
 import 'package:posinotes_sqlflite/pages/dashboard_page.dart';
 import 'package:posinotes_sqlflite/widget/quote_widget.dart';
-//import 'package:random_color/random_color.dart';
+import 'package:random_color/random_color.dart';
 
 class QuotesPage extends StatefulWidget {
   const QuotesPage({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class QuotesPage extends StatefulWidget {
 
 class _QuotesPageState extends State<QuotesPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
- // final RandomColor _randomColor = RandomColor();
+  final RandomColor _randomColor = RandomColor();
 
   @override
   void initState() {
@@ -51,10 +51,11 @@ class _QuotesPageState extends State<QuotesPage> {
             itemBuilder: (context, index){
               final document = snapshot.data.docs[index];
               return QuoteWidget(
-                backgroundColor: Colors.redAccent,
-                //_randomColor.randomColor(
-                //  colorBrightness: ColorBrightness.dark
-             //   ),
+                backgroundColor:
+                //Colors.redAccent,
+                _randomColor.randomColor(
+                  colorBrightness: ColorBrightness.light
+                ),
                 quote: document['quote'],
                 author: document['author'],
 

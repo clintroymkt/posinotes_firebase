@@ -39,6 +39,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+
       actions: [editButton(), deleteButton()],
     ),
     body: isLoading
@@ -59,7 +60,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
           SizedBox(height: 8),
           Text(
             DateFormat.yMMMd().format(note.createdTime),
-            style: TextStyle(color: Colors.white38),
+            style: TextStyle(color: Colors.blue),
           ),
           SizedBox(height: 8),
           Text(
@@ -73,6 +74,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
 
   Widget editButton() => IconButton(
       icon: Icon(Icons.edit_outlined),
+      color: Colors.blue,
       onPressed: () async {
         if (isLoading) return;
 
@@ -85,6 +87,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
 
   Widget deleteButton() => IconButton(
     icon: Icon(Icons.delete),
+    color: Colors.blue,
     onPressed: () async {
       await NotesDatabase.instance.delete(widget.noteId);
 

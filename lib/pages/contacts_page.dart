@@ -139,31 +139,7 @@ class ContactsPage extends StatelessWidget {
                     ),
                   ),
 
-                  Card(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children:[
-                          Text("Highlands Halfway House "),
 
-
-                          ListTile(
-                            leading: Icon(
-                                Icons.phone_android
-                            ),
-                            title: Text("+263 786 858 831"),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                                Icons.info
-                            ),
-                            title: Text("They also have Mandara Manor and Borrowdale Halfway House Their team has a Psychiatrist, Clinical Psychologist, Occupational Therapist"),
-                          ),
-                        ]
-
-
-                    ),
-                  ),
                 ],
               ),
             )
