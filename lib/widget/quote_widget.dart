@@ -15,15 +15,17 @@ class QuoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(),
+    //  padding: EdgeInsets.symmetric(),
       color: backgroundColor,
       child: Column(
+
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
             child: Center(
+
               child: Padding(
-                padding: EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 0),
+                padding: EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 0),
                 child: Text(
                   quote,
                   style: Themetext.headline,
@@ -32,11 +34,14 @@ class QuoteWidget extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: Center(
-              child: Text(
-                author,
-                style: Themetext.subhead,
+          Container(height: 120,
+            child: Expanded(
+              child: Center(
+
+                child: Text(
+                  author,
+                  style: Themetext.subhead,
+                ),
               ),
             ),
           ),
