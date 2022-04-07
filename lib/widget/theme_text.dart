@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Themetext {
-  static final headline = _headline.copyWith(fontSize: 30);
+  static final headline = _headline.copyWith(fontSize: 29);
 
   static final subhead = _subHead.copyWith(fontSize: 18);
 
