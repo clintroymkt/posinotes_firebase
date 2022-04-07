@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/model/article_model.dart';
 import 'package:posinotes_sqlflite/services/api_service.dart';
-import 'package:posinotes_sqlflite/services/notification_service.dart';
 import 'package:posinotes_sqlflite/widget/custom_list_tile.dart';
 
 class Articles extends StatefulWidget {
@@ -48,13 +47,7 @@ class Articles_List extends State<Articles> {
               child: CircularProgressIndicator(),
             );
           }),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => NotificationApi.showNotification(
-              title: 'Posinotes',
-              body:"The Happiness of your life depends o the quality of your thoughts",
-              payload: "gifted",
-          ),
-          )
+
 
 
 

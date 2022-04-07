@@ -1,12 +1,38 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:posinotes_sqlflite/pages/dashboard_page.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
-import 'package:posinotes_sqlflite/services/notification_service.dart';
+
+
+
 
 Future main() async {
+  //Initialize the awesome notifications widget
+  AwesomeNotifications().initialize(
+      'resource://drawable/res_notification_app_icon',
+      [
+        NotificationChannel(
+          channelKey: 'basic_channel',
+          channelName: 'Basic Notifications',
+          defaultColor: Colors.teal,
+          importance: NotificationImportance.High,
+          channelShowBadge: true,
+        ),
+        NotificationChannel(
+          channelKey: 'scheduled_channel',
+          channelName: 'Scheduled Notifications',
+          defaultColor: Colors.teal,
+          locked: true,
+          importance: NotificationImportance.High,
+          channelShowBadge: true,
+        ),
+      ]
+  );
+
+
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await SystemChrome.setPreferredOrientations([

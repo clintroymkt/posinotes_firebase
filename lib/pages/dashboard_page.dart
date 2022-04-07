@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/pages/contacts_page.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
 import 'package:posinotes_sqlflite/pages/quote_page.dart';
-import 'package:posinotes_sqlflite/services/notification_service.dart';
 
 import 'articles.dart';
 
@@ -37,13 +36,6 @@ class _DashboardPageState extends State<DashboardPage> {
 
     //Articles
     Center(child: Articles()),
-
-    Center(
-      child: FloatingActionButton(onPressed: () => NotificationApi.showNotification(
-        title: 'Gift',
-        body:"Holy shits"
-      )),
-    )
 
     // ProductsPage()
   ];
