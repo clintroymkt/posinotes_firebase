@@ -19,13 +19,13 @@ Future<void> createPlantFoodNotification() async {
 
 //scheduled notifications
 Future<void> createWaterReminderNotification(
-    NotificationWeekAndTime notificationSchedule) async {
+    NotificationWeekAndTime notificationSchedule, String title, String body) async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: 1,
       channelKey: 'scheduled_channel',
-      title: '${Emojis.emotion_heart_with_ribbon} Add some water to your plant!',
-      body: 'Water your plant regularly to keep it healthy.',
+      title: '${Emojis.emotion_heart_with_ribbon} $title',
+      body: '$body.',
       notificationLayout: NotificationLayout.BigText,
 
     ),
