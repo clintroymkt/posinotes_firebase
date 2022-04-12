@@ -7,9 +7,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/model/quote.dart';
 //import 'package:posinotes_sqlflite/network/quotes_network.dart';
-import 'package:posinotes_sqlflite/pages/dashboard_page.dart';
 import 'package:posinotes_sqlflite/services/utils.dart';
 import 'package:posinotes_sqlflite/widget/notifications.dart';
+// import 'package:posinotes_sqlflite/widget/notifications.dart';
 import 'package:posinotes_sqlflite/widget/quote_widget.dart';
 import 'package:random_color/random_color.dart';
 
@@ -22,6 +22,8 @@ class QuotesPage extends StatefulWidget {
 }
 
 dynamic notification_data = "";
+dynamic notification_data1 = "";
+
 class _QuotesPageState extends State<QuotesPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final RandomColor _randomColor = RandomColor();
@@ -61,6 +63,12 @@ class _QuotesPageState extends State<QuotesPage> {
           final documents = snapshot.data.docs..shuffle();
 
           notification_data = documents[result];
+          notification_data1 = documents[result];
+
+
+          createWaterReminderNotification(notification_data1['quote'],notification_data1['author']);
+          debugPrint( 'the quote is ' + notification_data['quote']);
+          debugPrint( 'the author is ' + notification_data['author']);
 
           return PageView.builder(
             itemCount: snapshot.data.docs.length,
@@ -81,20 +89,21 @@ class _QuotesPageState extends State<QuotesPage> {
 
         },
       ),
-      floatingActionButton:FloatingActionButton(
-        backgroundColor: Color(0XFF3BAAFF),
-        child: Icon(Icons.doorbell_outlined),
-        onPressed: () async {
-          debugPrint('here');
-          NotificationWeekAndTime? pickedSchedule =
-          await pickSchedule(context);
-          debugPrint('here 2');
-          if (pickedSchedule != null) {
-            debugPrint('here 3');
-            createWaterReminderNotification(pickedSchedule,notification_data['author'],notification_data['quote']);
-          }
-        },
-      ) ,
+
+      // floatingActionButton:FloatingActionButton(
+      //   backgroundColor: Color(0XFF3BAAFF),
+      //   child: Icon(Icons.doorbell_outlined),
+      //   onPressed: () async {
+      //     debugPrint('here');
+      //     NotificationWeekAndTime? pickedSchedule =
+      //     await pickSchedule(context);
+      //     debugPrint('here 2');
+      //     if (pickedSchedule != null) {
+      //       debugPrint('here 3');
+      //       createWaterReminderNotification(pickedSchedule,notification_data['author'],notification_data['quote']);
+      //     }
+      //   },
+      // ) ,
     );
 
 

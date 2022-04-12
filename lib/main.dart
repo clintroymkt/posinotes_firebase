@@ -1,9 +1,12 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:posinotes_sqlflite/pages/dashboard_page.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
+import 'package:posinotes_sqlflite/pages/quote_page.dart';
+import 'package:posinotes_sqlflite/widget/notifications.dart';
 
 
 
@@ -39,9 +42,9 @@ Future main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   static final String title = 'Notes SQLite';
