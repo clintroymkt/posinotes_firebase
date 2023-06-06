@@ -1,5 +1,8 @@
 //import 'dart:developer';
 
+
+
+import 'package:flutter/foundation.dart';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,8 +14,9 @@ import 'package:posinotes_sqlflite/services/utils.dart';
 import 'package:posinotes_sqlflite/widget/notifications.dart';
 // import 'package:posinotes_sqlflite/widget/notifications.dart';
 import 'package:posinotes_sqlflite/widget/quote_widget.dart';
+import 'package:workmanager/workmanager.dart';
 import 'package:random_color/random_color.dart';
-
+import '../main.dart';
 
 class QuotesPage extends StatefulWidget {
   const QuotesPage({Key? key}) : super(key: key);
@@ -26,17 +30,17 @@ dynamic notification_data1 = "";
 
 class _QuotesPageState extends State<QuotesPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final RandomColor _randomColor = RandomColor();
 
   @override
   void initState() {
     super.initState();
     // futureQuote = fetchQuote();
   }
+  RandomColor _randomColor = RandomColor();
 
   @override
 
- // late Future<List<Quote>> futureQuote;
+  // late Future<List<Quote>> futureQuote;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -44,19 +48,15 @@ class _QuotesPageState extends State<QuotesPage> {
         foregroundColor: Color(0XFF3BAAFF),
         title: Text("Quotes"),
         automaticallyImplyLeading: false,
-
       ),
 
       body: StreamBuilder(
-       
-
         stream: _firestore.collection("qoutes").snapshots(),
-        builder: (BuildContext context, AsyncSnapshot  snapshot){
-
-          if(!snapshot.hasData) return _LoadingIndicator();
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) return _LoadingIndicator();
 
           var random = new Random();
-          var min =0;
+          var min = 0;
           var max = snapshot.data.docs.length;
           num result = min + random.nextInt(max - min);
 
@@ -66,62 +66,45 @@ class _QuotesPageState extends State<QuotesPage> {
           notification_data1 = documents[result];
 
 
-          createWaterReminderNotification(notification_data1['quote'],notification_data1['author']);
-          debugPrint( 'the quote is ' + notification_data['quote']);
-          debugPrint( 'the author is ' + notification_data['author']);
 
-          return PageView.builder(
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (context, index){
-              var doc = documents[index];
-              return QuoteWidget(
-                backgroundColor:
-                //Colors.redAccent,
-                _randomColor.randomColor(
-                  colorBrightness: ColorBrightness.light
-                ),
-                quote: doc['quote'],
-                author: doc['author'],
+          return Scaffold(
+            body: PageView.builder(
+              itemCount: snapshot.data.docs.length,
+              itemBuilder: (context, index) {
+                var doc = documents[index];
+                return QuoteWidget(
+                  backgroundColor:
+                      //Colors.redAccent,
+                  _randomColor.randomColor(
+                      colorBrightness: ColorBrightness.dark
+                  ),
+                  quote: doc['quote'],
+                  author: doc['author'],
+                );
+              },
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                // Add your onPressed code here!
+                Workmanager().registerPeriodicTask(
+                    simplePeriodicTask, simplePeriodic1HourTask,
+                    frequency: Duration(minutes: 10));
+              },
+              backgroundColor: Colors.green,
+              child: const Icon(Icons.notification_add),
+            ),
 
-              );
-            },
           );
-
         },
       ),
 
-      // floatingActionButton:FloatingActionButton(
-      //   backgroundColor: Color(0XFF3BAAFF),
-      //   child: Icon(Icons.doorbell_outlined),
-      //   onPressed: () async {
-      //     debugPrint('here');
-      //     NotificationWeekAndTime? pickedSchedule =
-      //     await pickSchedule(context);
-      //     debugPrint('here 2');
-      //     if (pickedSchedule != null) {
-      //       debugPrint('here 3');
-      //       createWaterReminderNotification(pickedSchedule,notification_data['author'],notification_data['quote']);
-      //     }
-      //   },
-      // ) ,
+
     );
-
-
-
-
-
   }
-
-
-
-
-
-
 }
 
-class _LoadingIndicator extends StatelessWidget{
+class _LoadingIndicator extends StatelessWidget {
   @override
-
   Widget build(BuildContext context) {
     return Center(
       child: CircularProgressIndicator(),

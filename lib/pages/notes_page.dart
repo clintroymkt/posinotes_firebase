@@ -67,30 +67,49 @@ class _NotesPageState extends State<NotesPage> {
         );
 
         refreshNotes();
+
       },
     ),
   );
 
-  Widget buildNotes() => StaggeredGridView.countBuilder(
-    padding: EdgeInsets.all(8),
-    itemCount: notes.length,
-    staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+  Widget buildNotes() => MasonryGridView.count(
     crossAxisCount: 4,
     mainAxisSpacing: 4,
     crossAxisSpacing: 4,
-    itemBuilder: (context, index) {
-      final note = notes[index];
-
+    itemCount: notes.length,
+    itemBuilder: (BuildContext context, int index) {
+      var note = notes[index];
       return GestureDetector(
-        onTap: () async {
-          await Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => NoteDetailPage(noteId: note.id!),
-          ));
-
-          refreshNotes();
+        onTap: () async{
+          await Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NoteDetailPage(noteId: note.id!)));
         },
-        child: NoteCardWidget(note: note, index: index),
+          child: NoteCardWidget(note: note, index: index),
       );
+      refreshNotes();
     },
+
+
+
+    // padding: EdgeInsets.all(8),
+    // itemCount: notes.length,
+    // staggeredTileBuilder: (index) => StaggeredGridTile.fit(2, crossAxisCellCount: null,),
+    // crossAxisCount: 4,
+    // mainAxisSpacing: 4,
+    // crossAxisSpacing: 4,
+    // itemBuilder: (context, index) {
+    //   final note = notes[index];
+    //
+    //   return GestureDetector(
+    //     onTap: () async {
+    //       await Navigator.of(context).push(MaterialPageRoute(
+    //         builder: (context) => NoteDetailPage(noteId: note.id!),
+    //       ));
+    //
+    //       refreshNotes();
+    //     },
+    //     child: NoteCardWidget(note: note, index: index),
+    //   );
+    // },
+
   );
 }
