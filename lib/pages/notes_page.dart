@@ -43,20 +43,38 @@ class _NotesPageState extends State<NotesPage> {
       foregroundColor: Color(0XFF3BAAFF),
       automaticallyImplyLeading: false,
       title: Text(
-        'Notes',
+        'My Notes',
         style: TextStyle(fontSize: 24),
       ),
       actions: [Icon(Icons.search), SizedBox(width: 12)],
     ),
     body: Center(
-      child: isLoading
-          ? CircularProgressIndicator()
-          : notes.isEmpty
-          ? Text(
-        'No Notes',
-        style: TextStyle(color: Colors.black, fontSize: 24),
-      )
-          : buildNotes(),
+      child: Column(
+
+        children: [
+          isLoading
+              ? CircularProgressIndicator()
+              : notes.isEmpty
+              ? Center(
+                child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.error_outline),
+                    Container(
+                      height: 100,
+                      width:150,
+                      child: Text(
+            'No Notes',
+            style: TextStyle(color: Colors.black, fontSize: 24,),
+          ),
+                    ),
+                  ],
+                ),
+              )
+              : buildNotes(),
+        ],
+      ),
     ),
     floatingActionButton: FloatingActionButton(
       backgroundColor: Color(0XFF3BAAFF),

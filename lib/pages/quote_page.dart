@@ -86,19 +86,14 @@ class _QuotesPageState extends State<QuotesPage> {
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 // Add your onPressed code here!
-                Workmanager().registerPeriodicTask(
-                    simplePeriodicTask, simplePeriodic1HourTask,
-                    frequency: Duration(minutes: 10));
+
               },
               backgroundColor: Colors.green,
               child: const Icon(Icons.notification_add),
             ),
-
           );
         },
       ),
-
-
     );
   }
 }
